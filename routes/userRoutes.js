@@ -6,6 +6,7 @@ const {
   checkIfUserAlreadyExists,
   getUser,
   deleteUser,
+  updateAccount,
 } = require("../controllers/userController");
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.get("/all", allUsers);
 router.post("/check", checkIfUserAlreadyExists);
 router.get("/:id", getUser);
 router.delete("/:id", deleteUser);
+router.put("/:id", updateAccount);
 
 module.exports = router;

@@ -39,6 +39,7 @@ const registerUser = async (req, res) => {
       username: user.username,
       phone: user.phone,
       createdAt: user.createdAt,
+      isAdmin: user.isAdmin,
     });
   } else {
     res.status(400);
@@ -65,6 +66,7 @@ const loginUser = async (req, res) => {
       username: user.username,
       phone: user.phone,
       createdAt: user.createdAt,
+      isAdmin: user.isAdmin,
     });
   } else {
     res.status(400).send("Invalid credentials");
@@ -120,7 +122,7 @@ const checkIfUserAlreadyExists = async (req, res) => {
 
 // @Update  PUT
 // http://localhost:8000/api/v1/user/:id
-const updateMyAccount = async (req, res) => {
+const updateAccount = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -153,7 +155,7 @@ module.exports = {
   loginUser,
   getUser,
   checkIfUserAlreadyExists,
-  updateMyAccount,
+  updateAccount,
   allUsers,
   deleteUser,
 };
